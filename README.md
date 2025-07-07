@@ -18,3 +18,33 @@
 
 [ Norsk / Norwegian ]
 «Master YunJinYeongs koreanske romanisering (MYKR)» er en skrivemetode utviklet av Master YunJinYeong i 1999 for å fullt ut fange opp koreanske tegn i ASCII-inputmiljøet.
+
+Master YunJinYeong's Korean Romanization(MYKR)  Forward Converter - Version 1.0 (July 7. 2025.)
+MYKR_F_Converter.html
+
+Master YunJinYeong's Korean Romanization(MYKR)  Reverse Converter - Version 1.0 (July 7. 2025.)
+MYKR_R_Converter.html
+
+Master YunJinYeong's Korean Romanization(MYKR)  Unicode Table - Version 1.0 (July 7. 2025.)
+MYKR_Unicode_Table.html
+
+Master YunJinYeong's Korean	Romanization(MYKR) Conversion Table - Korean Version 1.0 (July 7. 2025.)
+MYKR_Table_Korean.pdf
+
+Master YunJinYeong's Korean	Romanization(MYKR) Conversion Table - Korean + MYKR Version 1.0 (July 7. 2025.)
+MYKR_Table_Korean_MYKR.pdf
+
+Master YunJinYeong's Korean	Romanization(MYKR) Conversion Table - English Version 1.0 (July 7. 2025.)
+MYKR_Table_English.pdf
+
+Master YunJinYeong's Korean	Romanization(MYKR) Conversion Table - Spanish Version 1.0 (July 7. 2025.)
+MYKR_Table_Spanish.pdf
+
+Master YunJinYeong's Korean	Romanization(MYKR) Conversion Table - French Version 1.0 (July 7. 2025.)
+MYKR_Table_French.pdf
+
+Master YunJinYeong's Korean	Romanization(MYKR) Conversion Table - German Version 1.0 (July 7. 2025.)
+MYKR_Table_German.pdf
+
+Master YunJinYeong's Korean	Romanization(MYKR) Conversion Table - Norwegian Version 1.0 (July 7. 2025.)
+MYKR_Table_Norwegian.pdf
