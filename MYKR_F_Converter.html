@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<title>MYKR Converter</title>
+<style>
+        body { font-family: Arial, sans-serif; padding: 2em; max-width: 900px; margin: auto; }
+        textarea { width: 100%; height: 150px; }
+        .result { margin-top: 1em; padding: 1em; border: 1px solid #ccc; background: #f9f9f9; white-space: pre-wrap; word-break: break-word; }
+        button { margin-top: 1em; padding: 0.5em 1em; font-size: 1em; }
+    </style>
+</head>
+<body>
+<h1>MYKR Converter (Offline)</h1>
+<p>입력: 한글 → 출력: MYKR 로마자</p>
+<textarea id="input" placeholder="예: 수련자들이 무기들과 무예들을 쓰고있다"></textarea>
+<br/>
+<button onclick="convert()">Convert</button>
+<div class="result" id="output"></div>
+<script>
+        const BASE = 0xAC00;
+        const CHO = ['G','GG','N','D','DD','R','M','B','BB','S','SS','','J','JJ','CH','K','T','P','H'];
+        const JUNG = ['a','ae','ya','yae','eo','e','yeo','ye','o','oa','oae','oi','yo','u','ueo','ue','ui','yu','eu','eui','i'];
+        const JONG = ['','g','gg','gs','n','nj','nh','d','r','rg','rm','rb','rs','rt','rp','rh','m','b','bs','s','ss','ng','j','ch','k','t','p','h'];
+
+        const special = {'oi':'Oi','ui':'Ui','eui':'Eui','oa':'Oa','oae':'Oae','ue':'Ue'};
+
+        function convert() {
+            const input = document.getElementById("input").value;
+            let result = '';
+            for (const ch of input) {
+                const code = ch.charCodeAt(0);
+                if (code < 0xAC00 || code > 0xD7A3) {
+                    result += ch;
+                    continue;
+                }
+                const diff = code - BASE;
+                const cho = Math.floor(diff / (21 * 28));
+                const jung = Math.floor((diff % (21 * 28)) / 28);
+                const jong = diff % 28;
+                let j = JUNG[jung];
+                if (CHO[cho] === '') {
+                    j = special[j] || j.charAt(0).toUpperCase() + j.slice(1);
+                }
+                result += CHO[cho] + j + JONG[jong];
+            }
+            document.getElementById("output").textContent = result;
+        }
+    </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const lang = navigator.language.slice(0, 2);
+    const t = {'ko': {'h1': '한글 → MYKR 로마자 변환기', 'desc': '입력: 한글 → 출력: MYKR 로마자 (한글을 MYKR 로마자 표기로 변환합니다.)', 'placeholder': '예: 무예도보통지 이십사반무예 → MuYeDoBoTongJi ISibSaBanMuYe'}, 'en': {'h1': '한글(Korean letter) → MYKR (Roman letter) Converter', 'desc': '[INPUT] 한글(KOREAN LETTER) → [OUTPUT] MYKR (ROMAN LETTER) (Convert Korean to MYKR)', 'placeholder': 'example: 무예도보통지 이십사반무예 → MuYeDoBoTongJi ISibSaBanMuYe'}, 'es': {'h1': 'Convertidor de 한글(letra coreana) → MYKR (letra romana)', 'desc': '[ENTRADA] 한글(LETRA COREANA) → [SALIDA] MYKR (LETRA ROMANA) (Convertir coreano a MYKR)', 'placeholder': 'ejemplo: 무예도보통지 이십사반무예 → MuYeDoBoTongJi ISibSaBanMuYe'}, 'fr': {'h1': 'Convertisseur 한글(lettre coréenne) → MYKR (lettre romaine)', 'desc': '[ENTRÉE] 한글 (LETTRE CORÉENNE) → [SORTIE] MYKR (LETTRE ROMAINE) (Convertir le coréen en MYKR)', 'placeholder': 'exemple\xa0: 무예도보통지 이십사반무예 → MuYeDoBoTongJi ISibSaBanMuYe'}, 'de': {'h1': '한글 (koreanischer Buchstabe) → MYKR (römischer Buchstabe) Konverter', 'desc': '[EINGABE] 한글 (KOREANISCHER BUCHSTABE) → [AUSGABE] MYKR (RÖMISCHER BUCHSTABE) (Koreanisch in MYKR umwandeln)', 'placeholder': 'Beispiel: 무예도보통지 이십사반무예 → MuYeDoBoTongJi ISibSaBanMuYe'}, 'pt': {'h1': 'Conversor 한글 (letra coreana) → MYKR (letra romana)', 'desc': '[ENTRADA] 한글(LETRA COREANA) → [SAÍDA] MYKR (LETRA ROMANA) (Converter coreano em MYKR)', 'placeholder': 'exemplo: 무예도보통지 이십사반무예 → MuYeDoBoTongJi ISibSaBanMuYe'}};
+    if (t[lang]) {
+        document.querySelector("h1").textContent = t[lang].h1;
+        document.querySelector("p").textContent = t[lang].desc;
+        document.querySelector("textarea").placeholder = t[lang].placeholder;
+    }
+});
+</script></body>
+</html>
